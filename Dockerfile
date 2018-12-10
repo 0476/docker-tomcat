@@ -2,12 +2,18 @@
 #VERSION 0.0.1
 #Author: ailikes
 
-FROM openjdk:8-jre
+FROM daocloud.io/library/centos:latest
 #作者
 MAINTAINER ailikes <15600499930@163.com>
-ENV CATALINA_HOME /tomcat
+COPY jdk1.8  /usr/local/jdk1.8/
 ADD tomcat-7.0.88 /tomcat
 ADD run.sh /run.sh
+
+ENV JAVA_HOME /usr/local/jdk1.8
+ENV CATALINA_HOME /tomcat
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin
+
 RUN chmod +x /*.sh
 RUN chmod +x /tomcat/bin/*.sh
 EXPOSE 18080

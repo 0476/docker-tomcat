@@ -11,8 +11,16 @@
               description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" pathname="conf/tomcat-users.xml" />
   </GlobalNamingResources>
   <Service name="Catalina">
-    <Connector port="18080" protocol="org.apache.coyote.http11.Http11NioProtocol"  connectionTimeout="20000"  URIEncoding="UTF-8"  useBodyEncodingForURI="true"  
-      enableLookups="false"  redirectPort="8443" />
+    <Connector port="18080" protocol="org.apache.coyote.http11.Http11NioProtocol" maxThreads="1000"
+     maxHttpHeaderSize="8192"
+     minSpareThreads="100"
+     maxSpareThreads="200"
+     acceptCount="1000"
+     maxConnections="1000"
+     connectionTimeout="30000"
+     keepAliveTimeout="15000"
+     URIEncoding="UTF-8"  useBodyEncodingForURI="true"  
+     enableLookups="false"  redirectPort="8443" />
     <!-- <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" /> -->
     <Engine name="Catalina" defaultHost="localhost">
       <Realm className="org.apache.catalina.realm.LockOutRealm">
