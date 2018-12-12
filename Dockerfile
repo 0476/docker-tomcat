@@ -6,7 +6,7 @@ FROM daocloud.io/library/centos:latest
 #作者
 MAINTAINER ailikes <15600499930@163.com>
 COPY jdk1.8  /usr/local/jdk1.8/
-ADD tomcat-7.0.88 /tomcat
+ADD tomcat /tomcat
 ADD run.sh /run.sh
 
 ENV JAVA_HOME /usr/local/jdk1.8
